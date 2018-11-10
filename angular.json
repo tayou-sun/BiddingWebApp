@@ -7,7 +7,7 @@
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
-      "prefix": "app",
+      "prefix": "",
       "schematics": {},
       "architect": {
         "build": {
@@ -23,7 +23,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/assets/styles/styles.css",
+              "src/assets/styles/jqx.base.css"
             ],
             "scripts": []
           },
@@ -115,6 +116,41 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "jqLibrary": {
+      "root": "projects/jq-library",
+      "sourceRoot": "projects/jq-library/src",
+      "projectType": "library",
+      "prefix": "tm",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/jq-library/tsconfig.lib.json",
+            "project": "projects/jq-library/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/jq-library/src/test.ts",
+            "tsConfig": "projects/jq-library/tsconfig.spec.json",
+            "karmaConfig": "projects/jq-library/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/jq-library/tsconfig.lib.json",
+              "projects/jq-library/tsconfig.spec.json"
+            ],
             "exclude": [
               "**/node_modules/**"
             ]

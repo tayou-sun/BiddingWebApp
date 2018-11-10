@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../Service/auth.service';
 import { UserService } from '../../Model/auth';
 import { Router } from '@angular/router';
+import { ErrorService } from '../../Service/error.service';
+import { MessageService } from '../../Service/message.service';
 
 @Component({
   selector: 'app-bidding-authentication',
@@ -11,15 +13,17 @@ import { Router } from '@angular/router';
 export class BildingAuthenticationComponent {
 
   id: number;
-  isEmptyData : boolean;
+  isEmptyData: boolean;
 
   constructor(private userService: UserService,
     private router: Router,
-    private appService: AuthService) {
+    private appService: AuthService,
+    private errorService: ErrorService,
+    private messageService: MessageService) {
   }
 
   create() {
-    this.router.navigateByUrl("/create_user")
+    this.router.navigateByUrl('/create_user');
   }
   search() {
     this.appService.getAuthor(this.id).subscribe((data: number) => {
@@ -27,6 +31,9 @@ export class BildingAuthenticationComponent {
       this.userService.setParams(data);
       this.router.navigate(['/biddings']);
     },
-      error => this.router.navigateByUrl("/error"))
+      error => {
+        this.errorService.SetError(error);
+      }
+    );
   }
 }

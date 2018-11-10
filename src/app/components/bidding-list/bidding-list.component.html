@@ -2,9 +2,14 @@
 
 <div>
     <button [routerLink]='["/create"]' type="button" class="btn btn-light">Create</button>
-    <!-- <a [routerLink]='["/create"]' class="nav-link">Create</a> -->
+    <button  [disabled]="!isEnable" (click)="save()" type="button" class="btn btn-light">Save</button>
 </div>
-
+<jqxGrid
+    [width]="getWidth()" [source]="dataAdapter" [columns]="columns"
+    [pageable]="true" [autoheight]="true" [sortable]="true" 
+    [altrows]="true"  [enabletooltips]="true"  [editable]="true" 
+    [selectionmode]="'multiplecellsadvanced'" [columngroups]="columngroups">
+</jqxGrid>
 <!-- <div>
     <div class="form-group">
         <div class="label-group">
@@ -16,7 +21,7 @@
 </div> -->
 
 <!-- <bidding-search [(id)]="id"></bidding-search> -->
-<div class="table-block">
+<!-- <div class="table-block">
     <table class="table table-striped">
         <thead>
             <tr>
@@ -34,4 +39,4 @@
             </tr>
         </tbody>
     </table>
-</div>
+</div> -->

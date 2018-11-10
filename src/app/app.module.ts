@@ -1,20 +1,25 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
-import { AppService } from './Service/app.service'
+import { AppService } from './Service/app.service';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
-import { HttpModule } from '@angular/http';
 import { MessageListComponent } from './components/bidding-list/bidding-list.component';
 import { BiddingCreateComponent } from './components/bidding-create/bidding-create.component';
 import { BiddingFormComponent } from './components/bidding-form/bidding-form.component';
 import { BildingAuthenticationComponent } from './components/bidding-authentication/bidding-authentication.component';
-import { AuthGuard } from "./Service/auth.guard"
+import { AuthGuard } from './Service/auth.guard';
 import { UserService } from './Model/auth';
 import { AuthService } from './Service/auth.service';
 import { ErrorComponent } from './components/error/error.component';
 import { CreateAuthorComponent } from './components/create-author/create-author.component';
+import { ErrorService } from './Service/error.service';
+/* import {jqxGridComponent} from '../../projects/JQW/TS/angular_jqxgrid'
+ */
+import { JqLibraryModule } from 'jqLibrary';
+import { BiddingGridComponent } from './components/bidding-grid/bidding-grid.component';
+import { MessageService } from './Service/message.service';
 
 const appRoutes: Routes = [
   {
@@ -43,23 +48,24 @@ const appRoutes: Routes = [
     path: '**',
     redirectTo: '/'
   }
-]
+];
 
 @NgModule({
   declarations: [
-    [ AppComponent, 
-      MessageListComponent, 
-      BiddingCreateComponent, 
+    [ AppComponent,
+      MessageListComponent,
+      BiddingCreateComponent,
       BiddingFormComponent,
       /* BiidingSearchComponent */
-      BildingAuthenticationComponent, 
+      BildingAuthenticationComponent,
       ErrorComponent,
-      CreateAuthorComponent]
+      CreateAuthorComponent,
+      /* jqxGridComponent */BiddingGridComponent]
   ],
   imports: [
-    BrowserModule, HttpModule, FormsModule, HttpClientModule, RouterModule.forRoot(appRoutes)
+    BrowserModule, FormsModule, HttpClientModule, JqLibraryModule, RouterModule.forRoot(appRoutes)
   ],
-  providers: [AppService, AuthGuard, UserService, AuthService],
+  providers: [AppService, AuthGuard, UserService, AuthService, ErrorService, MessageService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

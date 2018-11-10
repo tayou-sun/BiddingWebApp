@@ -16,6 +16,14 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "paths": {
+      "jqLibrary": [
+        "dist/jq-library"
+      ],
+      "jqLibrary/*": [
+        "dist/jq-library/*"
+      ]
+    }
   }
 }
