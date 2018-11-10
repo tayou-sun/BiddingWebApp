@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="col-sm-8">
+        <label>Enter Id or </label>
+        <button (click)="create()"type="button" class="btn btn-link">create</button>
+        <div class="form-group">
+            <div class="input-group">
+                <input type="text" [(ngModel)]="id" class="form-control" placeholder="Id" aria-describedby="button-addon4">
+                <div class="input-group-append" id="button-addon4">
+                    <button type="button" (click)="search()" class="btn btn-outline-secondary">Go!</button>
+                </div>
+            </div>
+        </div>
+        
+        <div *ngIf="isEmptyData" class="alert alert-danger" role="alert">
+            <strong>Oh no!</strong> User is not exist!
+        </div>
+    </div>
+</div>

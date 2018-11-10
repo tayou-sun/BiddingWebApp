@@ -1,0 +1,22 @@
+th, td {
+    border: 1px solid #8080804a
+}
+
+.form-group{
+    display: inline-flex;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+label {
+    padding-right: 10px
+}
+
+.table-block {
+    padding-top: 20px;
+}
+
+h3 {
+    color: #1e90ff8f;
+    padding-bottom: 10px;
+}
